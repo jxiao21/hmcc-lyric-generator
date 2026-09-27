@@ -1,0 +1,919 @@
+/* -------------------------------------------------------
+   BASE
+------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #171717;
+  background: #f5f5f4;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* -------------------------------------------------------
+   HEADER
+------------------------------------------------------- */
+
+.header {
+  height: 100px;
+
+  padding: 22px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  background: #ffffff;
+
+  border-bottom:
+    1px solid #e7e5e4;
+}
+
+.headerText {
+  min-width: 0;
+}
+
+.header h1 {
+  margin: 0 0 4px;
+
+  color: #18181b;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  letter-spacing: -0.035em;
+}
+
+.header p {
+  margin: 0;
+
+  color: #78716c;
+
+  font-size: 13px;
+}
+
+/* -------------------------------------------------------
+   SONGBOOK STATUS
+------------------------------------------------------- */
+
+.libraryStatus {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 12px;
+
+  background: #fafaf9;
+
+  border:
+    1px solid #e7e5e4;
+
+  border-radius: 999px;
+
+  color: #57534e;
+
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.libraryStatus.error {
+  color: #991b1b;
+
+  background: #fef2f2;
+
+  border-color: #fecaca;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #a8a29e;
+}
+
+.statusDot.loaded {
+  background: #22c55e;
+}
+
+.statusDot.loading {
+  background: #f59e0b;
+}
+
+.statusDot.error {
+  background: #ef4444;
+}
+
+/* -------------------------------------------------------
+   MAIN WORKSPACE
+------------------------------------------------------- */
+
+.workspace {
+  height:
+    calc(100vh - 100px);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(360px, 470px)
+    minmax(0, 1fr);
+}
+
+/* -------------------------------------------------------
+   LEFT EDITOR
+------------------------------------------------------- */
+
+.editorPanel {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-right:
+    1px solid #e7e5e4;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.section.grow {
+  flex: 1;
+
+  min-height: 300px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.label {
+  color: #292524;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  letter-spacing: 0.01em;
+}
+
+.songCount {
+  color: #a8a29e;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------
+   FORM CONTROLS
+------------------------------------------------------- */
+
+.input,
+.lyricsEditor,
+.toolbar input,
+.toolbar select {
+  border:
+    1px solid #d6d3d1;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #171717;
+
+  outline: none;
+
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.input {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  font-size: 13px;
+}
+
+.input::placeholder,
+.lyricsEditor::placeholder {
+  color: #a8a29e;
+}
+
+.input:focus,
+.lyricsEditor:focus {
+  border-color: #a8a29e;
+
+  box-shadow:
+    0 0 0 3px
+      rgba(168, 162, 158, 0.12);
+}
+
+.input:disabled,
+.lyricsEditor:disabled {
+  background: #fafaf9;
+
+  color: #a8a29e;
+
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------
+   SONG LIST
+------------------------------------------------------- */
+
+.songList {
+  max-height: 225px;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border:
+    1px solid #e7e5e4;
+
+  border-radius: 8px;
+}
+
+.song {
+  width: 100%;
+
+  min-height: 42px;
+
+  padding: 9px 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border: 0;
+
+  border-bottom:
+    1px solid #f0efed;
+
+  background: #ffffff;
+
+  color: #292524;
+
+  text-align: left;
+
+  transition:
+    background 100ms ease,
+    color 100ms ease;
+}
+
+.song:last-child {
+  border-bottom: 0;
+}
+
+.song:hover {
+  background: #fafaf9;
+}
+
+.song.active {
+  background: #f5f5f4;
+
+  color: #18181b;
+
+  font-weight: 600;
+}
+
+.songTitle {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.song small {
+  flex-shrink: 0;
+
+  color: #a8a29e;
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.noSongs {
+  padding: 24px 15px;
+
+  color: #a8a29e;
+
+  font-size: 12px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------
+   SONGBOOK ERROR
+------------------------------------------------------- */
+
+.songbookError {
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  background: #fef2f2;
+
+  border:
+    1px solid #fecaca;
+
+  border-radius: 7px;
+
+  color: #991b1b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.songbookError strong {
+  font-size: 12px;
+}
+
+.songbookError code {
+  padding: 1px 4px;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.7
+  );
+
+  border-radius: 3px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+/* -------------------------------------------------------
+   LYRICS EDITOR
+------------------------------------------------------- */
+
+.lyricsEditor {
+  flex: 1;
+
+  width: 100%;
+
+  min-height: 350px;
+
+  padding: 14px;
+
+  resize: vertical;
+
+  line-height: 1.55;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 12px;
+}
+
+.hint {
+  margin: 0;
+
+  color: #a8a29e;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+/* -------------------------------------------------------
+   RIGHT PREVIEW PANEL
+------------------------------------------------------- */
+
+.previewPanel {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #f5f5f4;
+}
+
+/* -------------------------------------------------------
+   TOOLBAR
+------------------------------------------------------- */
+
+.toolbar {
+  min-height: 62px;
+
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  border-bottom:
+    1px solid #e7e5e4;
+}
+
+.toolbar label {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #57534e;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.toolbar input[type="number"] {
+  width: 62px;
+
+  padding: 6px 7px;
+}
+
+.toolbar select {
+  padding: 6px 7px;
+}
+
+.toolbar input:focus,
+.toolbar select:focus {
+  border-color: #a8a29e;
+
+  outline: none;
+}
+
+.toolbar .checkbox {
+  margin-left: auto;
+}
+
+.toolbar input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+
+  margin: 0;
+
+  accent-color: #18181b;
+}
+
+/* -------------------------------------------------------
+   PREVIEW
+------------------------------------------------------- */
+
+.preview {
+  flex: 1;
+
+  min-height: 0;
+
+  margin: 26px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: auto;
+}
+
+.preview canvas {
+  display: block;
+
+  width: min(
+    100%,
+    850px
+  );
+
+  height: auto;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px
+      rgba(0, 0, 0, 0.04),
+    0 8px 30px
+      rgba(0, 0, 0, 0.08);
+
+  border-radius: 2px;
+}
+
+/*
+ * Checkerboard is only a preview.
+ * The actual PNG remains transparent.
+ */
+.preview.transparent canvas {
+  background-color: #ffffff;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      #f1f1f1 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      -45deg,
+      #f1f1f1 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 75%,
+      #f1f1f1 75%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 75%,
+      #f1f1f1 75%
+    );
+
+  background-size:
+    20px 20px;
+
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
+}
+
+/* -------------------------------------------------------
+   EMPTY PREVIEW
+------------------------------------------------------- */
+
+.emptyPreview {
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #a8a29e;
+
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e7e5e4;
+
+  border-radius: 50%;
+
+  color: #78716c;
+
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+}
+
+.emptyPreview strong {
+  color: #57534e;
+
+  font-size: 14px;
+}
+
+.emptyPreview span {
+  font-size: 12px;
+}
+
+/* -------------------------------------------------------
+   ACTION BAR
+------------------------------------------------------- */
+
+.actions {
+  padding: 14px 20px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 9px;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  border-top:
+    1px solid #e7e5e4;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 37px;
+
+  padding: 8px 15px;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.primaryButton {
+  border:
+    1px solid #18181b;
+
+  background: #18181b;
+
+  color: #ffffff;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: #27272a;
+}
+
+.secondaryButton {
+  border:
+    1px solid #d6d3d1;
+
+  background: #ffffff;
+
+  color: #292524;
+}
+
+.secondaryButton:hover:not(:disabled) {
+  background: #fafaf9;
+}
+
+button:disabled {
+  opacity: 0.42;
+
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------
+   STATUS BAR
+------------------------------------------------------- */
+
+.status {
+  padding: 8px 20px;
+
+  flex-shrink: 0;
+
+  background: #fafaf9;
+
+  border-top:
+    1px solid #e7e5e4;
+
+  color: #78716c;
+
+  font-size: 10px;
+
+  text-align: right;
+}
+
+/* -------------------------------------------------------
+   SCROLLBARS
+------------------------------------------------------- */
+
+.songList::-webkit-scrollbar,
+.editorPanel::-webkit-scrollbar,
+.preview::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.songList::-webkit-scrollbar-thumb,
+.editorPanel::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+
+  border-radius: 999px;
+}
+
+.songList::-webkit-scrollbar-track,
+.editorPanel::-webkit-scrollbar-track,
+.preview::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* -------------------------------------------------------
+   TABLET / SMALL DESKTOP
+------------------------------------------------------- */
+
+@media (max-width: 1050px) {
+  .workspace {
+    grid-template-columns:
+      minmax(330px, 400px)
+      minmax(0, 1fr);
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .toolbar .checkbox {
+    margin-left: 0;
+  }
+}
+
+/* -------------------------------------------------------
+   MOBILE
+------------------------------------------------------- */
+
+@media (max-width: 800px) {
+  .header {
+    height: auto;
+
+    padding: 18px 20px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .workspace {
+    height: auto;
+
+    display: block;
+  }
+
+  .editorPanel {
+    border-right: 0;
+
+    border-bottom:
+      1px solid #e7e5e4;
+  }
+
+  .section.grow {
+    min-height: auto;
+  }
+
+  .lyricsEditor {
+    min-height: 350px;
+  }
+
+  .previewPanel {
+    min-height: 700px;
+  }
+
+  .toolbar {
+    gap: 12px;
+  }
+
+  .preview {
+    min-height: 500px;
+
+    margin: 18px;
+  }
+
+  .actions {
+    position: sticky;
+
+    bottom: 0;
+  }
+
+  /* -------------------------------------------------------
+    MULTIPLE VERSIONS / ARRANGEMENTS
+  ------------------------------------------------------- */
+
+  .songInfo {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+  }
+
+  .versionBadge {
+    flex-shrink: 0;
+
+    padding: 2px 6px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 999px;
+
+    color: #15803d;
+
+    font-size: 9px;
+    font-weight: 650;
+
+    white-space: nowrap;
+  }
+
+  .versionSection {
+    padding: 12px;
+
+    background: #fafaf9;
+
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+  }
+
+  .versionCount {
+    color: #a8a29e;
+
+    font-size: 10px;
+  }
+
+  .versionSelect {
+    cursor: pointer;
+  }
+
+  .versionHint {
+    margin: 0;
+
+    color: #a8a29e;
+
+    font-size: 10px;
+
+    line-height: 1.45;
+  }
+}
