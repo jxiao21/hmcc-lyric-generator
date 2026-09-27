@@ -12,6 +12,246 @@ You can edit the lyrics before creating the image and then either:
 No coding knowledge is required to use the app. Follow the instructions below.
 
 ---
+# Downloading the application
+
+1. Download the Worship Lyrics Generator
+
+The Worship Lyrics Generator is stored on GitHub.
+
+There are two ways to download it:
+
+Download ZIP — recommended if you are not familiar with coding tools.
+
+Git Clone — useful if you are familiar with Git or want an easier way to download future updates.
+
+If you aren't sure which one to use, use Download ZIP.
+
+Option A — Download ZIP From GitHub
+
+This is the easiest option and does not require Git.
+
+Step 1 — Open the GitHub Repository
+
+Open the GitHub link that was provided to you for the Worship Lyrics Generator.
+
+You should see the project files, including things such as:
+
+public
+src
+package.json
+README.md
+vite.config.js
+
+Step 2 — Click "Code"
+
+Near the top-right of the file list, click the green Code button.
+
+A menu will appear.
+
+Step 3 — Click "Download ZIP"
+
+Click:
+
+Download ZIP
+
+Your browser will download a .zip file containing the entire application.
+
+It will usually be placed in your computer's Downloads folder.
+
+Step 4 — Extract the ZIP File
+
+You need to extract the ZIP before running the application.
+
+Mac
+
+Open Finder and go to Downloads.
+
+Find the downloaded ZIP file. It may have a name similar to:
+
+worship-lyrics-main.zip
+
+Double-click it.
+
+macOS will create a normal folder next to the ZIP file, such as:
+
+worship-lyrics-main
+
+Windows
+
+Open File Explorer and go to Downloads.
+
+Find the downloaded ZIP file.
+
+Right-click it and choose:
+
+Extract All...
+
+Choose where you want the folder to be stored and click Extract.
+
+Step 5 — Move the Folder Somewhere Convenient
+
+You can move the extracted folder somewhere easy to find, such as your:
+
+Desktop
+
+or:
+
+Documents
+
+You can also rename:
+
+worship-lyrics-main
+
+to simply:
+
+worship-lyrics
+
+The folder should contain files similar to:
+
+worship-lyrics/
+│
+├── public/
+│   └── songbook.csv
+│
+├── src/
+│   ├── App.css
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+├── README.md
+└── vite.config.js
+
+You now have the application downloaded.
+
+Continue to Installing Node.js below.
+
+2. Alternative: Download Using Git Clone
+
+This method is optional.
+
+If you used Download ZIP, skip this section.
+
+Git allows you to download the project using the command line. It also makes downloading future updates easier.
+
+Install Git
+
+Before using git clone, Git needs to be installed on your computer.
+
+You can download Git from:
+
+https://git-scm.com/downloads
+
+Follow the installer instructions for your operating system.
+
+Mac
+
+Some Macs may already have Git installed.
+
+You can check later by running:
+
+git --version
+
+Windows
+
+Download Git for Windows from the Git website and use the default installation options.
+
+Copy the Repository URL
+
+Open the Worship Lyrics Generator repository on GitHub.
+
+Click the green Code button.
+
+Make sure HTTPS is selected.
+
+You should see an address similar to:
+
+https://github.com/USERNAME/worship-lyrics.git
+
+Click the copy button next to it.
+
+Open the Command Line
+
+Mac
+
+Press:
+
+Command + Space
+
+Type:
+
+Terminal
+
+Press Enter.
+
+Windows
+
+Press the Windows key.
+
+Type:
+
+PowerShell
+
+Open PowerShell.
+
+Choose Where to Download the App
+
+For example, to download it to your Desktop:
+
+Mac
+
+Run:
+
+cd ~/Desktop
+
+Windows
+
+Run:
+
+cd $HOME\Desktop
+
+Press Enter.
+
+Clone the Repository
+
+Type:
+
+git clone 
+
+Do not press Enter yet.
+
+Paste the GitHub repository URL after it.
+
+For example:
+
+git clone https://github.com/USERNAME/worship-lyrics.git
+
+Replace the example address with the actual GitHub repository address.
+
+Press Enter.
+
+Git will download the project.
+
+You should see messages similar to:
+
+Cloning into 'worship-lyrics'...
+Receiving objects...
+Resolving deltas...
+
+When it finishes, you should have a new folder:
+
+worship-lyrics
+
+on your Desktop.
+
+Enter the folder by running:
+
+cd worship-lyrics
+
+You now have the application downloaded.
+
+---
 
 # 1. Before Using the App for the First Time
 
@@ -40,13 +280,13 @@ After installation finishes, continue with the instructions for your computer.
 You should have been given a folder called something similar to:
 
 ```text
-worship-lyrics
+hmcc-lyric-generator
 ```
 
 Inside it, you should see files and folders similar to:
 
 ```text
-worship-lyrics/
+hmcc-lyric-generator/
 │
 ├── public/
 │   └── songbook.csv (this file will be missing initially and will need to be uploaded manually by you for copyright reasons)
@@ -140,20 +380,20 @@ Notice the space after `cd`.
 
 Do **not** press Enter yet.
 
-Then drag the `worship-lyrics` folder from Finder on Mac or File Explorer on Windows directly into the command-line window.
+Then drag the `hmcc-lyric-generator` folder from Finder on Mac or File Explorer on Windows directly into the command-line window.
 
 Your computer should automatically insert the folder's location.
 
 For example, on a Mac it may look like:
 
 ```bash
-cd /Users/yourname/Desktop/worship-lyrics
+cd /Users/yourname/Desktop/hmcc-lyric-generator
 ```
 
 On Windows it may look like:
 
 ```powershell
-cd C:\Users\YourName\Desktop\worship-lyrics
+cd C:\Users\YourName\Desktop\hmcc-lyric-generator
 ```
 
 Now press **Enter**.
@@ -166,7 +406,7 @@ You are now inside the Worship Lyrics project.
 
 You only need to do this the **first time you run the app on a computer**.
 
-After navigating into the `worship-lyrics` folder, type:
+After navigating into the `hmcc-lyric-generator` folder, type:
 
 ```bash
 npm install
@@ -326,7 +566,7 @@ By His own betrayed
 
 The cleaned lyrics appear in the **Lyrics** box.
 
-You can click inside this box and make any changes you want.
+You can click inside this box and make any changes you want. Please note that this lyric generator is not 100% accurate in removing chords from chord charts, so make sure to double-check your lyrics!
 
 This is useful for:
 
@@ -445,7 +685,7 @@ If you receive a newer songbook, you can replace this file.
 
 ## Step 1
 
-Open the `worship-lyrics` folder.
+Open the `hmcc-lyric-generator` folder.
 
 ## Step 2
 
@@ -550,7 +790,7 @@ Type:
 cd 
 ```
 
-Then drag the `worship-lyrics` folder into the command-line window and press **Enter**.
+Then drag the `hmcc-lyric-generator` folder into the command-line window and press **Enter**.
 
 ## Step 3 — Start the app
 
@@ -614,7 +854,7 @@ Type:
 cd 
 ```
 
-Drag the `worship-lyrics` folder into the command-line window and press **Enter**.
+Drag the `hmcc-lyric-generator` folder into the command-line window and press **Enter**.
 
 Then run:
 
@@ -629,7 +869,7 @@ npm run dev
 Make sure this file exists:
 
 ```text
-worship-lyrics/public/songbook.csv
+hmcc-lyric-generator/public/songbook.csv
 ```
 
 The filename must be exactly:
