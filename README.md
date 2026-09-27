@@ -11,6 +11,8 @@ You can edit the lyrics before creating the image and then either:
 
 No coding knowledge is required to use the app. Follow the instructions below.
 
+**Please note** - the lyric generator is not perfect at removing all the chords from the chord charts that it is using to pull lyrics. Please double-check your lyrics before downloading/copying the generated image.
+
 ---
 
 # 1. Download the Worship Lyrics Generator
