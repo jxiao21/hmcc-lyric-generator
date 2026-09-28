@@ -425,7 +425,7 @@ export default function App() {
     useState(28);
 
   const [titleSize, setTitleSize] =
-    useState(38);
+    useState(28);
 
   const [imageWidth, setImageWidth] =
     useState(1000);
